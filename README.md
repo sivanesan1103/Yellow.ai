@@ -3,26 +3,7 @@
 
 Chat with AI using Google's Gemini API. Login with Google, create projects, and have conversations!
 
-## 🚀 Quick Start Options
-
-### Option 1: Docker (Recommended) 🐳
-**Easiest way - Everything runs in containers!**
-
-1. Install [Docker Desktop](https://docs.docker.com/get-docker/)
-2. Run the app:
-   ```bash
-   # Windows
-   start.bat
-   
-   # Linux/Mac  
-   chmod +x start.sh && ./start.sh
-   ```
-3. Open http://localhost
-
-📖 **[Full Docker Guide →](DOCKER-SETUP.md)**
-
-### Option 2: Manual Setup 🛠️
-**For developers who want full control**
+## ⚡ Quick Start
 
 ### What You Need:
 1. **Node.js** installed - [Download here](https://nodejs.org/)
@@ -50,9 +31,9 @@ cd ../client
 npm install
 ```
 
-### Step 3: Setup Environment File
-Create a file called `.env` in the `server` folder and add:
+### Step 3: Setup Environment Files
 
+**Server Environment** - Create `.env` in the `server` folder:
 ```env
 JWT_SECRET=mySecretKey123
 JWT_REFRESH_SECRET=myRefreshKey123
@@ -66,6 +47,11 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 CLIENT_URL=http://localhost:5173
 SERVER_URL=http://localhost:3000
 NODE_ENV=development
+```
+
+**Client Environment** - Create `.env` in the `client` folder:
+```env
+VITE_SERVER_URL=http://localhost:3000
 ```
 
 ### Step 4: Get Your API Keys

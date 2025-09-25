@@ -89,6 +89,7 @@ class AuthService {
     // Login with email/password
     async login(email, password) {
         try {
+            console.log('Attempting login for:', email);
             const response = await this.api.post('/api/auth/login', {
                 email,
                 password,

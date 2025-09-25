@@ -31,7 +31,8 @@ export const AppContextProvider = ({ children })=>{
         try {
             // Try the new auth endpoint first
             const result = await authService.getCurrentUser();
-            
+
+            console.log('Fetched user:', result);
             if (result.success) {
                 setUser(result.user);
                 return;
