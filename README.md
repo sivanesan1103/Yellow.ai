@@ -3,7 +3,26 @@
 
 Chat with AI using Google's Gemini API. Login with Google, create projects, and have conversations!
 
-## ⚡ Quick Start
+## 🚀 Quick Start Options
+
+### Option 1: Docker (Recommended) 🐳
+**Easiest way - Everything runs in containers!**
+
+1. Install [Docker Desktop](https://docs.docker.com/get-docker/)
+2. Run the app:
+   ```bash
+   # Windows
+   start.bat
+   
+   # Linux/Mac  
+   chmod +x start.sh && ./start.sh
+   ```
+3. Open http://localhost
+
+📖 **[Full Docker Guide →](DOCKER-SETUP.md)**
+
+### Option 2: Manual Setup 🛠️
+**For developers who want full control**
 
 ### What You Need:
 1. **Node.js** installed - [Download here](https://nodejs.org/)

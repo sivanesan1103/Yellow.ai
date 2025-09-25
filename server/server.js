@@ -79,6 +79,15 @@ app.use('/uploads', express.static('uploads'));
 // Routes
 app.get('/', (req, res) => res.send('Server is Live!'));
 
+// Health check endpoint for Docker
+app.get('/health', (req, res) => {
+    res.status(200).json({ 
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime()
+    });
+});
+
 app.get('/api/test', (req, res) => {
     res.json({ 
         success: true, 
