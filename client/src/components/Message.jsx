@@ -23,7 +23,7 @@ const Message = ({message}) => {
                   <p className='text-xs text-gray-500'>{message.fileInfo.type} • {(message.fileInfo.size/1024/1024).toFixed(2)}MB</p>
                   {message.fileInfo.url && (
                     <a 
-                      href={`http://localhost:3000${message.fileInfo.url}`} 
+                      href={`${import.meta.env.VITE_SERVER_URL || 'http://localhost:3000'}${message.fileInfo.url}`} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className='text-xs text-blue-500 hover:text-blue-700'
