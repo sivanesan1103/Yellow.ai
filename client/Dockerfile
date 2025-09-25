@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # Set build-time environment variables
-ARG VITE_SERVER_URL=http://localhost:3000
+ARG VITE_SERVER_URL=http://3.108.221.6:3001
 ENV VITE_SERVER_URL=$VITE_SERVER_URL
 
 # Build the application
@@ -22,6 +22,9 @@ RUN npm run build
 
 # Production stage
 FROM nginx:alpine
+
+# Install curl for health checks
+RUN apk add --no-cache curl
 
 # Copy built assets from build stage
 COPY --from=build /app/dist /usr/share/nginx/html
