@@ -23,7 +23,8 @@ if not exist ".env" (
     echo ⚠️  .env file not found. Creating from template...
     copy .env.docker .env
     echo 📝 Please edit .env file with your API keys before running again.
-    echo Required: GEMINI_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+    echo Required: GEMINI_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, MONGODB_URI
+    echo MongoDB Atlas: Get connection string from Atlas Dashboard
     pause
     exit /b 1
 )

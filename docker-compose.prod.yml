@@ -1,30 +1,6 @@
 version: '3.8'
 
 services:
-  # MongoDB Database - Production Configuration
-  mongodb:
-    image: mongo:7.0
-    container_name: yellowai-mongodb-prod
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME:-admin}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-yellowai2024}
-      MONGO_INITDB_DATABASE: yellowai
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_prod_data:/data/db
-      - ./mongodb-init:/docker-entrypoint-initdb.d
-    networks:
-      - yellowai-network
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1G
-        reservations:
-          memory: 512M
-
   # Backend Server - Production Configuration
   server:
     build: 
@@ -37,7 +13,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3000
-      MONGODB_URI: mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-yellowai2024}@mongodb:27017/yellowai?authSource=admin
+      MONGODB_URI: ${MONGODB_URI}
       JWT_SECRET: ${JWT_SECRET}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
       GEMINI_API_KEY: ${GEMINI_API_KEY}
@@ -48,8 +24,6 @@ services:
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
     volumes:
       - ./server/uploads:/app/uploads
-    depends_on:
-      - mongodb
     networks:
       - yellowai-network
     deploy:
@@ -120,8 +94,6 @@ services:
       - yellowai-network
 
 volumes:
-  mongodb_prod_data:
-    driver: local
   redis_prod_data:
     driver: local
 

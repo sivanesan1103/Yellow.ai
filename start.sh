@@ -39,6 +39,13 @@ if [ -z "$GOOGLE_CLIENT_ID" ] || [ "$GOOGLE_CLIENT_ID" = "your_google_client_id_
     exit 1
 fi
 
+if [ -z "$MONGODB_URI" ] || [[ "$MONGODB_URI" != *"mongodb"* ]]; then
+    echo "❌ MONGODB_URI is not set or invalid in .env file"
+    echo "Get your connection string from: MongoDB Atlas Dashboard → Connect → Drivers"
+    echo "Format: mongodb+srv://username:password@cluster.mongodb.net/yellowai"
+    exit 1
+fi
+
 echo "✅ Environment variables validated"
 
 # Build and start services
